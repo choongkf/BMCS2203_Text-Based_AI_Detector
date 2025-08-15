@@ -1,0 +1,45 @@
+# Python caches
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments and env files
+venv/
+.env
+.env.*
+
+# Logs and temp
+logs/
+*.log
+*.tmp
+
+# Model artifacts (large files)
+backend/model/*
+!backend/model/.gitkeep
+*.safetensors
+*.pt
+*.pth
+*.bin
+*.onnx
+
+# Data files (keep private/large)
+Training_Essay_Data.csv
+data/
+datasets/
+
+# Hugging Face / cache
+.cache/
+**/.cache/
+.huggingface/
+
+# Node / web (if ever added)
+node_modules/
+dist/
+build/
+
+# Editors/OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

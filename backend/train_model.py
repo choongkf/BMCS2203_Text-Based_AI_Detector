@@ -3,6 +3,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 import torch
 from transformers import RobertaTokenizer, RobertaForSequenceClassification, Trainer, TrainingArguments
+from transformers.trainer_utils import get_last_checkpoint
 
 # 1. Load and preprocess data
 df = pd.read_csv('../Training_Essay_Data.csv')
@@ -44,8 +45,9 @@ val_dataset = EssayDataset(val_encodings, val_labels)
 model = RobertaForSequenceClassification.from_pretrained('roberta-base', num_labels=2)
 
 # 4. Training arguments
+model_dir = './model'
 training_args = TrainingArguments(
-    output_dir='./model',
+    output_dir=model_dir,
     num_train_epochs=2,
     per_device_train_batch_size=8,
     per_device_eval_batch_size=8,
@@ -53,6 +55,7 @@ training_args = TrainingArguments(
     # save_strategy='epoch',
     logging_dir='./logs',
     logging_steps=10,
+    save_total_limit=2,
 )
 
 # 5. Trainer
@@ -63,8 +66,13 @@ trainer = Trainer(
     eval_dataset=val_dataset
 )
 
-# 6. Train
-trainer.train()
+# 6. Train (auto-resume from latest checkpoint if available)
+last_ckpt = get_last_checkpoint(model_dir)
+if last_ckpt:
+    print(f"Resuming training from checkpoint: {last_ckpt}")
+    trainer.train(resume_from_checkpoint=last_ckpt)
+else:
+    trainer.train()
 
 # 7. Save model and tokenizer
 model.save_pretrained('./model')

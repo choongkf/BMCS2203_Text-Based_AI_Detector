@@ -11,8 +11,13 @@ textarea{width:100%;min-height:180px;padding:12px;border-radius:8px;border:1px s
 .actions{display:flex;align-items:center;gap:12px;margin:12px 0}
 button{background:var(--accent);color:white;border:none;padding:10px 16px;border-radius:8px;cursor:pointer}
 button:hover{opacity:.9}
+button:disabled{opacity:.4;cursor:not-allowed}
 .status{color:var(--muted)}
 .status.error{color:#f87171}
+.word-row{display:flex;justify-content:flex-end;font-size:12px;margin-top:4px;color:var(--muted)}
+.word-row #wordCounter.met{color:var(--human);font-weight:600}
+.word-help{font-size:12px;margin-top:4px;color:#f59e0b;display: none;}
+.word-help.ok{color:var(--human)}
 .result{margin-top:16px}
 .hidden{display:none}
 .bars{display:flex;gap:8px;align-items:flex-end;margin:12px 0}

@@ -12,6 +12,10 @@
 		<h1>AI Text Detector</h1>
 		<p>Paste your text below and click Detect.</p>
 		<textarea id="inputText" placeholder="Paste or type text here..."></textarea>
+		<div class="word-row">
+			<span id="wordCounter" data-dynamic="true">0/30 words</span>
+		</div>
+		<div id="wordHelp" class="word-help">Please paste or enter at least 30 words.</div>
 		<div class="actions">
 			<button id="detectBtn">Detect</button>
 			<span id="status" class="status"></span>
@@ -27,6 +31,6 @@
 		</div>
 	</div>
 
-	<script src="script.js"></script>
+	<script src="script.js?v=2"></script>
 	</body>
 	</html>

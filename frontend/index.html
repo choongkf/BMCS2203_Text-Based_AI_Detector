@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>AI Text Detector</title>
+	<link rel="stylesheet" href="style.css" />
+	<link rel="preconnect" href="http://127.0.0.1:8000" />
+</head>
+<body>
+	<div class="container">
+		<h1>AI Text Detector</h1>
+		<p>Paste your text below and click Detect.</p>
+		<textarea id="inputText" placeholder="Paste or type text here..."></textarea>
+		<div class="actions">
+			<button id="detectBtn">Detect</button>
+			<span id="status" class="status"></span>
+		</div>
+
+		<div id="result" class="result hidden">
+			<h2>Result</h2>
+			<div class="bars">
+				<div class="bar human"><span id="humanPct">0%</span></div>
+				<div class="bar ai"><span id="aiPct">0%</span></div>
+			</div>
+			<p id="label"></p>
+		</div>
+	</div>
+
+	<script src="script.js"></script>
+	</body>
+	</html>
